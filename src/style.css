@@ -1,0 +1,73 @@
+:root { --ink: #15120f; --paper: #e9dfc8; --red: #b3261e; --dim: #a79c86; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--ink); color: var(--paper); font-family: 'EB Garamond', Garamond, Georgia, serif; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; }
+#stage { position: fixed; inset: 0; width: 100vw; height: 100vh; display: block; }
+.screen { position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; padding: 2rem; text-align: center; }
+#play { pointer-events: none; }
+.hidden { display: none !important; }
+h1 { font-size: clamp(2.6rem, 8vw, 5.2rem); font-weight: 400; letter-spacing: 0.04em; margin: 0; text-shadow: 0 0 18px rgba(10,8,6,0.95), 0 0 42px rgba(10,8,6,0.8); }
+h2 { font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 400; margin: 0; }
+.sub, .hint { color: var(--dim); font-style: italic; margin: 0; }
+#title .sub { color: #e2d8bf; font-weight: 500; font-size: clamp(1.15rem, 3.2vw, 1.5rem); text-shadow: 0 0 12px rgba(10,8,6,0.95); }
+#title nav button { background: none; border: none; min-width: 12rem; padding: 0.45rem 1rem 0.6rem; font-size: 1.4rem; letter-spacing: 0.03em; text-shadow: 0 0 10px rgba(10,8,6,0.95); background-image: linear-gradient(90deg, rgba(179,38,30,0), rgba(179,38,30,0.85) 20%, rgba(179,38,30,0.6) 75%, rgba(179,38,30,0)); background-repeat: no-repeat; background-size: 0% 3px; background-position: 50% 100%; transition: background-size 0.2s; }
+#title nav button:hover, #title nav button:focus-visible { background-size: 100% 3px; }
+#title nav button#btn-play { font-size: 1.7rem; background-size: 80% 3px; }
+nav { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+button { font: inherit; font-size: 1.25rem; color: var(--paper); background: rgba(21, 18, 15, 0.7); border: 1px solid var(--dim); padding: 0.55rem 1.6rem; min-width: 14rem; cursor: pointer; }
+button:hover, button:focus-visible { border-color: var(--red); outline: none; color: #fff; }
+button.big { min-width: 10rem; min-height: 10rem; border-radius: 50%; font-size: 1.6rem; border-color: var(--red); }
+label { display: flex; align-items: center; gap: 0.6rem; font-size: 1.15rem; }
+input[type=range] { accent-color: var(--red); width: min(16rem, 50vw); }
+input[type=checkbox] { accent-color: var(--red); width: 1.2rem; height: 1.2rem; }
+#title .title-foot { position: absolute; left: 0; right: 0; bottom: max(1.6rem, env(safe-area-inset-bottom)); margin: 0; color: #cfc4ab; font-size: 1.15rem; line-height: 1.5; text-shadow: 0 0 10px rgba(10,8,6,0.95); letter-spacing: 0.02em; }
+@media (orientation: landscape) and (max-height: 520px) { #title .title-foot { display: none; } }
+@media (orientation: portrait) { #title .title-foot { bottom: 12vh; font-size: 1.15rem; } }
+@media (orientation: landscape) and (max-height: 520px) { #title h1 { font-size: 2.5rem; } #title { gap: 0.55rem; padding-top: 1rem; } #title nav button { font-size: 1.25rem; padding: 0.3rem 1rem 0.4rem; } #title nav button#btn-play { font-size: 1.5rem; } }
+#scene { cursor: pointer; background: radial-gradient(ellipse at center, rgba(12,10,8,0.55), rgba(12,10,8,0.82)); }
+#scene .kicker { margin: 0; color: #d9a79f; letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.95rem; }
+.card { max-width: 36rem; font-size: clamp(1.25rem, 2.6vw, 1.6rem); line-height: 1.5; text-shadow: 0 0 10px rgba(10,8,6,0.95); min-height: 7em; display: flex; flex-direction: column; justify-content: center; }
+.card p { margin: 0; }
+.card .speaker { display: block; font-variant: small-caps; letter-spacing: 0.12em; color: #e3857a; font-size: 0.8em; margin-bottom: 0.35rem; }
+.card.ending-title { font-size: clamp(2rem, 6vw, 3rem); }
+.letter { text-align: left; background: #e9dfc8; color: #2a211a; padding: 1.3rem 1.6rem 1.1rem; box-shadow: 0 6px 30px rgba(0,0,0,0.6); font-size: clamp(1.05rem, 2.2vw, 1.3rem); line-height: 1.5; text-shadow: none; }
+.letter .from { font-style: italic; color: #7a6a58; font-size: 0.85em; margin-bottom: 0.6rem; }
+.letter p + p { margin-top: 0.6rem; }
+.letter .sign { text-align: right; margin-top: 0.8rem; }
+.skip { position: absolute; top: max(1rem, env(safe-area-inset-top)); right: 1rem; min-width: 0; font-size: 1rem; padding: 0.35rem 1rem; }
+.night-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; width: min(52rem, 94vw); }
+.night-list button { min-width: 0; width: 15.5rem; text-align: left; padding: 0.5rem 0.9rem; white-space: nowrap; background: rgba(16,13,11,0.88); }
+.night-list button small { display: block; color: #bfb39a; font-size: 0.95rem; font-style: italic; margin-top: 0.1rem; }
+.night-list button:disabled { opacity: 0.4; cursor: default; }
+.row { display: flex; gap: 0.8rem; flex-wrap: wrap; justify-content: center; }
+button.quiet { color: #cfc4ab; }
+.result-text { max-width: 32rem; font-size: 1.2rem; line-height: 1.5; margin: 0; }
+#result nav, #result-actions { margin-top: 0.5rem; }
+#credits p { margin: 0; font-size: 1.2rem; line-height: 1.6; max-width: 34rem; }
+#credits .thanks { color: #e3857a; font-style: italic; margin-top: 0.8rem; }
+@media (orientation: landscape) and (max-height: 520px) { .card { min-height: 0; font-size: 1.15rem; } .letter { padding: 0.8rem 1.1rem; font-size: 1rem; } #nights { gap: 0.5rem; padding: 1rem; } .night-list button { padding: 0.3rem 0.8rem; font-size: 1.05rem; } #nights .hint { display: none; } }
+#nights, #result, #credits { background: radial-gradient(ellipse at center, rgba(12,10,8,0.78) 0%, rgba(12,10,8,0.62) 55%, rgba(12,10,8,0.35) 100%); }
+#credits p, .result-text { color: #efe6d0; text-shadow: 0 0 10px rgba(10,8,6,0.95); }
+#credits .thanks { color: #f09a8e; }
+#play .leave { pointer-events: auto; position: absolute; left: max(0.8rem, env(safe-area-inset-left)); bottom: max(0.8rem, env(safe-area-inset-bottom)); min-width: 0; min-height: 2.6rem; font-size: 1rem; padding: 0.25rem 1rem; color: #e2d8bf; background: rgba(21,18,15,0.6); border-color: rgba(207,196,171,0.7); }
+#play .leave:hover, #play .leave:focus-visible { border-color: var(--red); color: #fff; }
+#practice { background: radial-gradient(ellipse at center, rgba(12,10,8,0.8) 0%, rgba(12,10,8,0.62) 55%, rgba(12,10,8,0.35) 100%); gap: 0.8rem; }
+#practice .kicker { margin: 0; color: #e3857a; letter-spacing: 0.14em; text-transform: uppercase; font-size: 1rem; }
+#practice .hint { color: #e2d8bf; max-width: 30rem; text-shadow: 0 0 10px rgba(10,8,6,0.95); }
+#practice .night-list button small { font-size: 1.05rem; color: #d8ccb2; font-style: normal; }
+#practice > button[data-back] { width: 15.5rem; min-width: 0; }
+.tabs { display: flex; gap: 0.35rem; flex-wrap: nowrap; justify-content: center; }
+.tabs button { min-width: 0; width: 2.7rem; padding: 0.3rem 0; font-variant-numeric: lining-nums; }
+.tabs button:disabled { color: #bfb39a; }
+.tabs button[aria-pressed="true"] { border-color: var(--red); background: rgba(179,38,30,0.35); color: #fff; }
+.tabs button:disabled { opacity: 0.6; cursor: default; border-color: rgba(167,156,134,0.5); }
+#settings { background: radial-gradient(ellipse at center, rgba(12,10,8,0.8) 0%, rgba(12,10,8,0.55) 70%, rgba(12,10,8,0.3) 100%); }
+#settings { font-variant-numeric: lining-nums; }
+#settings label { width: min(28rem, 92vw); text-shadow: 0 0 10px rgba(10,8,6,0.95); }
+#settings label:has(input[type=range]) { display: grid; grid-template-columns: 7.5rem 1fr 4rem; }
+#settings label input[type=range] { width: 100%; }
+#settings label span { text-align: right; }
+#settings label:has(input[type=range]) { text-align: right; column-gap: 0.8rem; }
+#settings label:has(input[type=checkbox]) { display: grid; grid-template-columns: 7.5rem 1fr; column-gap: 0.8rem; text-align: left; }
+#settings label input[type=checkbox] { justify-self: end; margin-right: -0.25rem; }
+@media (orientation: landscape) and (max-height: 520px) { #practice { padding: 0.8rem; gap: 0.4rem; } #practice .hint { display: none; } #practice h2 { font-size: 1.5rem; } #settings { gap: 0.4rem; padding: 0.8rem; } #settings label { font-size: 1rem; } }
+@media (max-width: 420px) { #practice { padding: 1.2rem 0.8rem; } .tabs button { width: 2.5rem; } }

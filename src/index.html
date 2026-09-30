@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Blade on the Beat. Hold the mountain gate for seven nights in a story-driven rhythm duel.">
+<meta name="theme-color" content="#15120f">
+<title>Blade on the Beat</title>
+<style>/*FONTS*/</style>
+<style>/*STYLE*/</style>
+</head>
+<body>
+<canvas id="stage" aria-label="Duel"></canvas>
+
+<section id="title" class="screen">
+  <h1>Blade on the Beat</h1>
+  <p class="sub">Seven nights at Kestrel Gate</p>
+  <nav>
+    <button id="btn-play">Begin</button>
+    <button id="btn-nights">Night select</button>
+    <button id="btn-practice">Practice</button>
+    <button id="btn-calibrate">Calibrate timing</button>
+    <button id="btn-settings">Settings</button>
+    <button id="btn-credits">Credits</button>
+  </nav>
+  <p class="title-foot">Parry on the beat. Tap, click or press Space.<br>Headphones recommended.</p>
+</section>
+
+<section id="calibrate" class="screen hidden">
+  <h2>Calibrate timing</h2>
+  <p id="cal-result">Tap on each drum beat. Sixteen beats.</p>
+  <button id="cal-tap" class="big">Tap</button>
+  <p class="hint">Space or tap. Headphones give the steadiest result.</p>
+  <button data-back>Back</button>
+</section>
+
+<section id="settings" class="screen hidden">
+  <h2>Settings</h2>
+  <label>Audio offset <input id="set-audio" type="range" min="-200" max="300" step="1"> <span id="val-audio"></span></label>
+  <label>Visual offset <input id="set-visual" type="range" min="-150" max="150" step="1"> <span id="val-visual"></span></label>
+  <label>Music <input id="set-music" type="range" min="0" max="100" step="1"> <span id="val-music"></span></label>
+  <label>Effects <input id="set-sfx" type="range" min="0" max="100" step="1"> <span id="val-sfx"></span></label>
+  <label><input id="set-assist" type="checkbox"> Assist timing (wider windows)</label>
+  <label><input id="set-reduce" type="checkbox"> Reduce effects (no shake or hit&#8209;stop)</label>
+  <button data-back>Back</button>
+</section>
+
+<section id="play" class="screen hidden" aria-live="polite"><button id="btn-leave" class="leave" aria-label="Leave the night">Leave</button></section>
+
+<section id="practice" class="screen hidden">
+  <h2>Practice</h2>
+  <div id="practice-nights" class="tabs" role="group" aria-label="Night"></div>
+  <p id="practice-title" class="kicker"></p>
+  <p class="hint">Pick a passage. It plays from one bar before, with no harm to Ren or Emberfall.</p>
+  <div id="practice-list" class="night-list"></div>
+  <button data-back>Back</button>
+</section>
+
+<section id="scene" class="screen hidden" aria-live="polite">
+  <p id="scene-kicker" class="kicker"></p>
+  <div id="scene-card" class="card"></div>
+  <p class="hint" id="scene-hint">Tap or press Space to continue</p>
+  <button id="scene-skip" class="skip">Skip</button>
+</section>
+
+<section id="nights" class="screen hidden">
+  <h2>Night select</h2>
+  <p class="hint" id="nights-note">Replays keep your best result. The story carries on from the next unplayed night.</p>
+  <div id="night-list" class="night-list"></div>
+  <div class="row"><button id="btn-restart" class="quiet">Start the story over</button><button data-back>Back</button></div>
+</section>
+
+<section id="result" class="screen hidden">
+  <h2 id="result-title"></h2>
+  <p id="result-text" class="result-text"></p>
+  <nav id="result-actions"></nav>
+</section>
+
+<section id="credits" class="screen hidden">
+  <h2>Blade on the Beat</h2>
+  <p>Story, rhythm, music and ink: made in the browser.<br>All sound is synthesized live. No recordings were used.<br>Set in EB Garamond.</p>
+  <p class="thanks">Thank you for holding the gate.</p>
+  <button data-back>Title</button>
+</section>
+
+<script>/*APP*/</script>
+</body>
+</html>
